@@ -4,7 +4,7 @@ CREATE DATABASE game_of_sql;
 \c game_of_sql;
 
 CREATE TABLE houses (
-  id SERIAL PRIMARY KEY, 
+  house_id SERIAL PRIMARY KEY, 
   house_name VARCHAR (30) NOT NULL, 
   sigil_img VARCHAR(2083),
   words TEXT NOT NULL,
@@ -13,14 +13,14 @@ CREATE TABLE houses (
 );
 
 CREATE TABLE religions (
-  id SERIAL PRIMARY KEY, 
+  religion_id SERIAL PRIMARY KEY, 
   name VARCHAR(50) NOT NULL,
   type VARCHAR(50) NOT NULL,
   god VARCHAR (50)
 );
 
 CREATE TABLE people (
-  id SERIAL PRIMARY KEY,
+  people_id SERIAL PRIMARY KEY,
   name VARCHAR (30) NOT NULL,
   picture_url VARCHAR (2083),
   dead BOOLEAN NOT NULL,
