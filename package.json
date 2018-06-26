@@ -1,0 +1,30 @@
+{
+  "name": "BE-game-of-sql",
+  "version": "1.0.0",
+  "description": "Please listen to the Game of Thrones title music whilst reading this readme. For dramatic effect.",
+  "main": "index.js",
+  "scripts": {
+    "test": "psql -f seed/seed.test.sql && mocha spec --exit",
+    "seed": "psql -f seed/seed.sql",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cwrighty92/BE-game-of-sql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cwrighty92/BE-game-of-sql/issues"
+  },
+  "homepage": "https://github.com/Cwrighty92/BE-game-of-sql#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.5",
+    "pg-promise": "^8.4.4",
+    "supertest": "^3.1.0"
+  }
+}
