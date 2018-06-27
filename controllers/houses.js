@@ -14,11 +14,16 @@ const getHouseByID = (req, res, next) => {
 };
 
 const createHouse = (req, res, next) => {
-  db.one("INSERT INTO houses (house_name, sigil_img, words, seat, region) VALUES ($1, $2, $3, $4, $5) RETURNING *;", Object.values(req.body)).then(
-    house => {
-      res.status(201).send({ house });
-    }
-  );
+  db.one(
+    "INSERT INTO houses (house_name, sigil_img, words, seat, region) VALUES ($1, $2, $3, $4, $5) RETURNING *;",
+    Object.values(req.body)
+  ).then(house => {
+    res.status(201).send({ house });
+  });
 };
+
+// const getPeopleForHouse = (req, res, next) => {
+//   db.many("SELECT * houses JOIN people ON houses")
+// }
 
 module.exports = { getHouses, getHouseByID, createHouse };
