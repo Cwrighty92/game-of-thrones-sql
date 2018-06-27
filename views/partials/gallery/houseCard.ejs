@@ -1,0 +1,28 @@
+<div class="col s5 m4">
+  <h2 class="header">
+    <%= house.house_name %>
+  </h2>
+  <div class="card-stacked">
+    <div class="card-image">
+      <% if(house.sigil_img === null) house.sigil_img = "https://img.wennermedia.com/660-width/rs-190583-16.-Mockingbird.jpg"%>
+        <img width='200' height='250' src="<%=house.sigil_img%>">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <p style="font-family:Arial, Helvetica, serif">
+          "
+          <%=house.words%> "
+        </p>
+        <p style="font-size:150%">
+          <%= house.seat %>
+        </p>
+        <p>
+          <%= house.region%>
+        </p>
+      </div>
+      <div class="card-action">
+
+      </div>
+    </div>
+  </div>
+</div>

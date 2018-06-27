@@ -3,7 +3,7 @@ const db = require("../db");
 const getHouses = (req, res, next) => {
   db.many("SELECT * FROM houses;")
     .then(houses => {
-      res.status(200).send({ houses });
+      res.status(200).render("pages/house", { houses });
     })
     .catch(next);
 };

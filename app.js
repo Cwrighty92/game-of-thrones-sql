@@ -4,6 +4,8 @@ const apiRouter = require("./routers/api");
 
 app.use(bodyParser.json());
 
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   res.send("All Good");
 });

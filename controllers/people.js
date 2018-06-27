@@ -23,7 +23,7 @@ const getPeople = (req, res, next) => {
       .catch(next);
   } else {
     return db.many("SELECT * FROM people;").then(people => {
-      res.send({ people });
+      res.render("pages/people", { people });
     });
   }
 };

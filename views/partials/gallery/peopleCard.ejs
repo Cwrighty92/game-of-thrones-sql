@@ -1,0 +1,21 @@
+<div class="col s5 m4">
+  <h4 class="header">
+    <%= person.person %>
+  </h4>
+  <div class="card-stacked">
+    <div class="card-image">
+      <% if(person.picture_url === null) person.picture_url = "https://img.wennermedia.com/660-width/rs-190583-16.-Mockingbird.jpg"%>
+        <img width=180px height=180px src="<%=person.picture_url%>">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <p style="font-family:Arial, Helvetica, serif">
+          Dead:
+          <%=person.dead%>
+        </p>
+      </div>
+      <div class="card-action">
+      </div>
+    </div>
+  </div>
+</div>
