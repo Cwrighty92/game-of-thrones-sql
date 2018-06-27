@@ -9,13 +9,18 @@ app.get("/", (req, res) => {
 });
 app.use("/api", apiRouter);
 
-app.use("/*", (req, res) => {
-  res.status(404).send("Page does not exsist");
+app.use("/*", (req, res, next) => {
+  next({ status: 404, message: "Page not found" });
+});
+
+app.use((err, req, res, next) => {
+  if (err.status) res.status(err.status).send({ message: err.message });
+  else next(err);
 });
 
 app.use((err, req, res, next) => {
   console.log(err);
-  res.status(500).send({ err });
+  res.status(500).send({ message: "Internal Server Error" });
 });
 
 module.exports = app;

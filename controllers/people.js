@@ -34,7 +34,39 @@ const getPeopleByID = (req, res, next) => {
     .then(person => {
       res.status(200).send({ person });
     })
-    .catch(next);
+    .catch(err => {
+      err.code === 0
+        ? next({
+            status: 404,
+            message: `Page for people ${person_id} not found`
+          })
+        : next({
+            status: 400,
+            message: `Bad request : people ${person_id} is invalid`
+          });
+    });
+};
+
+const getPeopleByHouse = (req, res, next) => {
+  const { house_id } = req.params;
+  db.many(
+    "SELECT * FROM people JOIN houses ON people.house_id = houses.house_id WHERE houses.house_id =$1",
+    [house_id]
+  )
+    .then(people => {
+      res.status(200).send({ people });
+    })
+    .catch(err => {
+      err.code === 0
+        ? next({
+            status: 404,
+            message: `Page for house ${house_id} not found`
+          })
+        : next({
+            status: 400,
+            message: `Bad request : house ${house_id} is invalid`
+          });
+    });
 };
 
 const createPeople = (req, res, next) => {
@@ -51,18 +83,21 @@ const createPeople = (req, res, next) => {
 const deadOrAlive = (req, res, next) => {
   const { person_id } = req.params;
   const { person_body } = req.body.dead;
-  console.log(req.body);
-  console.log(req.params);
-  console.log;
+
   db.none("UPDATE people SET dead $1 WHERE people_id = $2 RETURNING *;", [
     person_body,
     person_id
   ])
     .then(person => {
-      console.log(person);
       res.status(200).send({ person });
     })
     .catch(next);
 };
 
-module.exports = { getPeople, getPeopleByID, createPeople, deadOrAlive };
+module.exports = {
+  getPeople,
+  getPeopleByID,
+  createPeople,
+  deadOrAlive,
+  getPeopleByHouse
+};

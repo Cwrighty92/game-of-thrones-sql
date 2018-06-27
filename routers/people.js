@@ -3,7 +3,8 @@ const {
   getPeople,
   getPeopleByID,
   createPeople,
-  deadOrAlive
+  deadOrAlive,
+  getPeopleByHouse
 } = require("../controllers/people");
 
 peopleRouter
@@ -14,5 +15,6 @@ peopleRouter
   .route("/:person_id")
   .get(getPeopleByID)
   .put(deadOrAlive);
+peopleRouter.route("/houses/:house_id").get(getPeopleByHouse);
 
 module.exports = peopleRouter;
