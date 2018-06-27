@@ -23,7 +23,7 @@ describe("/api", () => {
             "https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiztpyan_HbAhUQecAKHb_JAswQjRx6BAgBEAU&url=http%3A%2F%2Fgameofthrones.wikia.com%2Fwiki%2FHouse_Arryn&psig=AOvVaw3w76hm4DEjR8DYypHHaJ6q&ust=1530099564868661",
           words: "As High as Honor",
           seat: "The Eyrie",
-          religion: "Faith of the Seven"
+          region: "The Vale of Arryn"
         })
         .expect(201)
         .then(res => {
